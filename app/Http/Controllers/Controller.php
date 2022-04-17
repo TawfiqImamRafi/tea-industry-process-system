@@ -10,4 +10,14 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    protected $data = [];
+
+    public function __construct()
+    {
+        $this->data = [
+            'page_title' => 'Tea Process',
+            'page_header' => 'Tea Process',
+        ];
+    }
 }
