@@ -9,19 +9,19 @@
         <li class="treeview">
             <a href="javascript:void(0)">
                 <i class="bx bxs-check-circle text-green-400"></i>
-                <span>Services</span>
+                <span>Farmers</span>
             </a>
             <ul class="treeview-menu">
                 <li>
-                    <a href="#">
+                    <a href="{{ route('farmer.list') }}">
                         <i class="bx bx-check-circle"></i>
-                        <span>All Services</span>
+                        <span>All Farmer</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ route('farmer.create') }}">
                         <i class="bx bx-check-circle"></i>
-                        <span>Add Service</span>
+                        <span>Add Farmer</span>
                     </a>
                 </li>
             </ul>

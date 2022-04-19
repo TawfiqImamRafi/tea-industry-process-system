@@ -36,12 +36,12 @@ Route::get('admin', function () {
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function ($router) {
     $router->get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
 
-    $router->group(['prefix' => 'blog'], function ($router) {
-        $router->get('/', [App\Http\Controllers\Admin\BlogController::class, 'index'])->name('blog.list');
-        $router->get('/create', [App\Http\Controllers\Admin\BlogController::class, 'create'])->name('blog.create');
-        $router->post('/create', [App\Http\Controllers\Admin\BlogController::class, 'store'])->name('blog.store');
-        $router->get('/edit/{id}', [App\Http\Controllers\Admin\BlogController::class, 'edit'])->name('blog.edit');
-        $router->put('/edit/{id}', [App\Http\Controllers\Admin\BlogController::class, 'update'])->name('blog.update');
-        $router->delete('/destroy/{id}', [App\Http\Controllers\Admin\BlogController::class, 'destroy'])->name('blog.destroy');
+    $router->group(['prefix' => 'farmer'], function ($router) {
+        $router->get('/', [App\Http\Controllers\Admin\FarmerController::class, 'index'])->name('farmer.list');
+        $router->get('/create', [App\Http\Controllers\Admin\FarmerController::class, 'create'])->name('farmer.create');
+        $router->post('/create', [App\Http\Controllers\Admin\FarmerController::class, 'store'])->name('farmer.store');
+        $router->get('/edit/{id}', [App\Http\Controllers\Admin\FarmerController::class, 'edit'])->name('farmer.edit');
+        $router->put('/edit/{id}', [App\Http\Controllers\Admin\FarmerController::class, 'update'])->name('farmer.update');
+        $router->delete('/destroy/{id}', [App\Http\Controllers\Admin\FarmerController::class, 'destroy'])->name('farmer.destroy');
     });
 });
