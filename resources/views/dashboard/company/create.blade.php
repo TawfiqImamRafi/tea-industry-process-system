@@ -1,15 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('content')
-<div class="row">
-    <div class="col-md-6 offset-3">
-        
-    <div class="box">
+
+   <div class="row">
+       <div class="col-md-6 offset-3">
+       <div class="box">
         <div class="box-header with-action">
-            <h5 class="box-title">Create New Farmer</h5>
-            <a href="{{ route('farmer.list') }}" class="btn btn-sm btn-secondary float-right">Farmer List</a>
+            <h5 class="box-title">Create New Company</h5>
+            <a href="{{ route('company.list') }}" class="btn btn-sm btn-secondary float-right">Company List</a>
         </div>
-        {!! Form::open(['route' => 'farmer.store', 'method' => 'POST']) !!}
+        {!! Form::open(['route' => 'company.store', 'method' => 'POST']) !!}
         <div class="box-body">
                 <div class="form-group row">
                     <label for="" class="col-md-3 col-form-label">Name</label>
@@ -23,6 +23,13 @@
                     <div class="col-md-9">
                         <input type="tel" name="phone" id="title" placeholder="Enter phone" class="form-control bg-gray-50">
                         <span class="text-danger">{{ $errors->first('phone') }}</span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-md-3 col-form-label">Email</label>
+                    <div class="col-md-9">
+                        <input type="email" name="email" id="title" placeholder="Enter email" class="form-control bg-gray-50">
+                        <span class="text-danger">{{ $errors->first('email') }}</span>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -41,6 +48,6 @@
         </div>
 
     </div>
-    </div>
-</div>
+       </div>
+   </div>
 @endsection

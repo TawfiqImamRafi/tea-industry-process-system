@@ -26,6 +26,26 @@
                 </li>
             </ul>
         </li>
+        <li class="treeview">
+            <a href="javascript:void(0)">
+                <i class="bx bxs-check-circle text-green-400"></i>
+                <span>Company</span>
+            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <a href="{{ route('company.list') }}">
+                        <i class="bx bx-check-circle"></i>
+                        <span>Companies</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('company.create') }}">
+                        <i class="bx bx-check-circle"></i>
+                        <span>Add Company</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
 
         
         <li>

@@ -44,4 +44,13 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function ($route
         $router->put('/edit/{id}', [App\Http\Controllers\Admin\FarmerController::class, 'update'])->name('farmer.update');
         $router->delete('/destroy/{id}', [App\Http\Controllers\Admin\FarmerController::class, 'destroy'])->name('farmer.destroy');
     });
+
+    $router->group(['prefix' => 'company'], function ($router) {
+        $router->get('/', [App\Http\Controllers\Admin\CompanyController::class, 'index'])->name('company.list');
+        $router->get('/create', [App\Http\Controllers\Admin\CompanyController::class, 'create'])->name('company.create');
+        $router->post('/create', [App\Http\Controllers\Admin\CompanyController::class, 'store'])->name('company.store');
+        $router->get('/edit/{id}', [App\Http\Controllers\Admin\CompanyController::class, 'edit'])->name('company.edit');
+        $router->put('/edit/{id}', [App\Http\Controllers\Admin\CompanyController::class, 'update'])->name('company.update');
+        $router->delete('/destroy/{id}', [App\Http\Controllers\Admin\CompanyController::class, 'destroy'])->name('company.destroy');
+    });
 });
