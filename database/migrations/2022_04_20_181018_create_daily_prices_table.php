@@ -15,7 +15,12 @@ class CreateDailyPricesTable extends Migration
     {
         Schema::create('daily_prices', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('company_id');
+            $table->date('date');
+            $table->integer('tea_price');
+            $table->integer('amount');
             $table->timestamps();
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
         });
     }
 

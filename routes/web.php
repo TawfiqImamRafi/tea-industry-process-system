@@ -53,4 +53,13 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function ($route
         $router->put('/edit/{id}', [App\Http\Controllers\Admin\CompanyController::class, 'update'])->name('company.update');
         $router->delete('/destroy/{id}', [App\Http\Controllers\Admin\CompanyController::class, 'destroy'])->name('company.destroy');
     });
+
+    $router->group(['prefix' => 'daily-price'], function ($router) {
+        $router->get('/', [App\Http\Controllers\Admin\DailyPriceController::class, 'index'])->name('price.list');
+        $router->get('/create', [App\Http\Controllers\Admin\DailyPriceController::class, 'create'])->name('price.create');
+        $router->post('/create', [App\Http\Controllers\Admin\DailyPriceController::class, 'store'])->name('price.store');
+        $router->get('/edit/{id}', [App\Http\Controllers\Admin\DailyPriceController::class, 'edit'])->name('price.edit');
+        $router->put('/edit/{id}', [App\Http\Controllers\Admin\DailyPriceController::class, 'update'])->name('price.update');
+        $router->delete('/destroy/{id}', [App\Http\Controllers\Admin\DailyPriceController::class, 'destroy'])->name('price.destroy');
+    });
 });
