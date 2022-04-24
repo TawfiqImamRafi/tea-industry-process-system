@@ -24,6 +24,19 @@
                         <span class="text-danger">{{ $errors->first('title') }}</span>
                     </div>
                 </div>
+        <div class="form-group row">
+                    <label for="" class="col-md-3 col-form-label">Tea Category</label>
+                    <div class="col-md-9">
+                        <select class="form-select form-control bg-gray-50" id="" name="category_id">
+                            <option value="">Choose category</option>
+
+                            @foreach($categories as $category)
+                                <option value={{ $category->id }}>{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                        <span class="text-danger">{{ $errors->first('title') }}</span>
+                    </div>
+                </div>
               
                 <div class="form-group row">
                     <label for="" class="col-md-3 col-form-label">Tea price</label>

@@ -21,7 +21,20 @@
                                 <option value={{ $company->id }} {{ $company->id == $price->company_id ? 'selected' : "" }} >{{ $company->name }}</option>
                             @endforeach
                         </select>
-                        <span class="text-danger">{{ $errors->first('title') }}</span>
+                        <span class="text-danger">{{ $errors->first('company_id') }}</span>
+                    </div>
+                </div>
+        <div class="form-group row">
+                    <label for="" class="col-md-3 col-form-label">Tea Category</label>
+                    <div class="col-md-9">
+                        <select class="form-select form-control bg-gray-50" id="" name="category_id">
+                            <option value="">Choose category</option>
+
+                            @foreach($categories as $category)
+                                <option value={{ $category->id }} {{ $category->id == $price->category_id ? 'selected' : "" }} >{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                        <span class="text-danger">{{ $errors->first('category_id') }}</span>
                     </div>
                 </div>
                 <div class="form-group row">

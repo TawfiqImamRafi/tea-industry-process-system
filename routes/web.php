@@ -61,5 +61,14 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function ($route
         $router->get('/edit/{id}', [App\Http\Controllers\Admin\DailyPriceController::class, 'edit'])->name('price.edit');
         $router->put('/edit/{id}', [App\Http\Controllers\Admin\DailyPriceController::class, 'update'])->name('price.update');
         $router->delete('/destroy/{id}', [App\Http\Controllers\Admin\DailyPriceController::class, 'destroy'])->name('price.destroy');
+        $router->get('/today', [App\Http\Controllers\Admin\DailyPriceController::class, 'today'])->name('price.today');
+    });
+    $router->group(['prefix' => 'tea-category'], function ($router) {
+        $router->get('/', [App\Http\Controllers\Admin\TeaCategoryController::class, 'index'])->name('category.list');
+        $router->get('/create', [App\Http\Controllers\Admin\TeaCategoryController::class, 'create'])->name('category.create');
+        $router->post('/create', [App\Http\Controllers\Admin\TeaCategoryController::class, 'store'])->name('category.store');
+        $router->get('/edit/{id}', [App\Http\Controllers\Admin\TeaCategoryController::class, 'edit'])->name('category.edit');
+        $router->put('/edit/{id}', [App\Http\Controllers\Admin\TeaCategoryController::class, 'update'])->name('category.update');
+        $router->delete('/destroy/{id}', [App\Http\Controllers\Admin\TeaCategoryController::class, 'destroy'])->name('category.destroy');
     });
 });

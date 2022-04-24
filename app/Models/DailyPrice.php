@@ -13,4 +13,8 @@ class DailyPrice extends Model
     public function company(){
         return $this->belongsTo(Company::class,'company_id','id');
     }
+
+    public function category(){
+        return $this->belongsTo(TeaCategory::class,'category_id','id');
+    }
 }

@@ -3,7 +3,7 @@
 @section('content')
     <div class="box">
         <div class="box-header with-action">
-            <h3 class="box-title">Price List</h3>
+            <h3 class="box-title">Today's Price List</h3>
             <a href="{{ route('price.create') }}" class="btn btn-sm btn-secondary float-right">Create new</a>
         </div>
         <div class="box-body">

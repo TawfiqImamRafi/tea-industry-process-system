@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Models\DailyPrice;
+use App\Models\TeaCategory;
 use Carbon\Carbon;
 
 class DailyPriceController extends Controller
@@ -14,7 +15,8 @@ class DailyPriceController extends Controller
     {
         $data = [
             'page_title' => 'Price list',
-            'prices' => DailyPrice::with('company')->get(),
+            'prices' => DailyPrice::with('company','category')->get(),
+
         ];
 
         return view('dashboard.price.index')->with(array_merge($this->data, $data));
@@ -25,6 +27,7 @@ class DailyPriceController extends Controller
         $data = [
             'page_title' => 'Create new daily price',
             'companies' => Company::all(),
+            'categories' => TeaCategory::all(),
         ];
 
         return view('dashboard.price.create')->with(array_merge($this->data, $data));
@@ -36,12 +39,14 @@ class DailyPriceController extends Controller
             'company_id' => 'required',
             'tea_price' => 'required',
             'amount' => 'required',
+            'category_id' => 'required',
         ];
         //validation
         $this->validate($request, $rules);
 
         $Company = new DailyPrice();
         $Company->company_id = $request->get('company_id');
+        $Company->category_id = $request->get('category_id');
         $Company->date = Carbon::now();
         $Company->tea_price = $request->get('tea_price');
         $Company->amount = $request->get('amount');
@@ -68,6 +73,7 @@ class DailyPriceController extends Controller
             'page_title' => 'Update daily price',
             'price' => DailyPrice::find($id),
             'companies' => Company::all(),
+            'categories' => TeaCategory::all(),
         ];
 
         return view('dashboard.price.edit')->with(array_merge($this->data, $data));
@@ -79,12 +85,14 @@ class DailyPriceController extends Controller
             'company_id' => 'required',
             'tea_price' => 'required',
             'amount' => 'required',
+            'category_id' => 'required',
         ];
         //validation
         $this->validate($request, $rules);
 
         $Company = DailyPrice::find($id);
         $Company->company_id = $request->get('company_id');
+        $Company->category_id = $request->get('category_id');
         $Company->tea_price = $request->get('tea_price');
         $Company->amount = $request->get('amount');
         if ($Company->save()) {
@@ -120,5 +128,16 @@ class DailyPriceController extends Controller
             'message' => 'Failed to delete daily price',
         ]);
 
+    }
+    public function today()
+    {
+        $date = database_formatted_date(Carbon::now());
+        $data = [
+            'page_title' => 'Price list',
+            'prices' => DailyPrice::with('company','category')->where('date',$date)->get(),
+
+        ];
+
+        return view('dashboard.price.today')->with(array_merge($this->data, $data));
     }
 }
