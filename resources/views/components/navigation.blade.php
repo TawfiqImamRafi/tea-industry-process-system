@@ -49,6 +49,26 @@
         <li class="treeview">
             <a href="javascript:void(0)">
                 <i class="bx bxs-check-circle text-green-400"></i>
+                <span>Tea categoriey</span>
+            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <a href="{{ route('category.list') }}">
+                        <i class="bx bx-check-circle"></i>
+                        <span>Tea categories</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('category.create') }}">
+                        <i class="bx bx-check-circle"></i>
+                        <span>Add category</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="javascript:void(0)">
+                <i class="bx bxs-check-circle text-green-400"></i>
                 <span>Daily Tea Prices</span>
             </a>
             <ul class="treeview-menu">
@@ -72,26 +92,29 @@
                 </li>
             </ul>
 
-            <li class="treeview">
+
+        
+        <li>
+        <li class="treeview">
             <a href="javascript:void(0)">
                 <i class="bx bxs-check-circle text-green-400"></i>
-                <span>Tea categoriey</span>
+                <span>Sales</span>
             </a>
             <ul class="treeview-menu">
                 <li>
-                    <a href="{{ route('category.list') }}">
+                    <a href="{{ route('sale.list') }}">
                         <i class="bx bx-check-circle"></i>
-                        <span>Tea categories</span>
+                        <span>Sales List</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('category.create') }}">
+                    <a href="{{ route('sale.create') }}">
                         <i class="bx bx-check-circle"></i>
-                        <span>Add category</span>
+                        <span>Create Sale</span>
                     </a>
                 </li>
             </ul>
-        </li>
+
 
         
         <li>

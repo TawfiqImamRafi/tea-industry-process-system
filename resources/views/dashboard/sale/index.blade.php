@@ -3,17 +3,16 @@
 @section('content')
     <div class="box">
         <div class="box-header with-action">
-            <h3 class="box-title">Price List</h3>
-            <a href="{{ route('price.create') }}" class="btn btn-sm btn-secondary float-right">Create new</a>
+            <h3 class="box-title">Sales List</h3>
+            <a href="{{ route('sale.create') }}" class="btn btn-sm btn-secondary float-right">Create new</a>
         </div>
-        <div class="box-body">
+        {{-- <div class="box-body">
             <table class="table table-bordered table-hover table-responsive-lg">
                 <thead>
                 <tr>
                     <th>#</th>
                     <th>Company</th>
                     <th>Tea category</th>
-
                     <th>Date</th>
                     <th>Tea price</th>
                     <th>Amount</th>
@@ -51,7 +50,7 @@
                 @endif
                 </tbody>
             </table>
-        </div>
+        </div> --}}
         <div class="box-footer">
         </div>
     </div>

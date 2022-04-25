@@ -41,14 +41,14 @@
                 <div class="form-group row">
                     <label for="" class="col-md-3 col-form-label">Tea price</label>
                     <div class="col-md-9">
-                        <input type="num" name="tea_price" id="title" placeholder="Enter tea price" class="form-control bg-gray-50">
+                        <input type="number" name="tea_price" id="title" placeholder="Enter tea price" class="form-control bg-gray-50">
                         <span class="text-danger">{{ $errors->first('tea_price') }}</span>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="" class="col-md-3 col-form-label">Amount</label>
                     <div class="col-md-9">
-                        <input type="num" name="amount" id="title" placeholder="Enter amount" class="form-control bg-gray-50">
+                        <input type="number" name="amount" id="title" placeholder="Enter amount" class="form-control bg-gray-50">
                         <span class="text-danger">{{ $errors->first('amount') }}</span>
                     </div>
                 </div>
