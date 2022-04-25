@@ -27,7 +27,7 @@
         <div class="form-group row">
                     <label for="" class="col-md-3 col-form-label">Company item</label>
                     <div class="col-md-9">
-                        <select class="form-select form-control bg-gray-50" id="" name="price_id">
+                        <select class="form-select form-control bg-gray-50 test" id="" name="price_id">
                             <option value="">Choose Item</option>
 
                             @foreach($prices as $price)
@@ -40,14 +40,14 @@
                 <div class="form-group row">
                     <label for="" class="col-md-3 col-form-label">Tea price</label>
                     <div class="col-md-9">
-                        <input type="number" name="total_price" id="title" placeholder="Enter tea price" class="form-control bg-gray-50">
+                        <input type="number" name="total_price" id="tea_price" placeholder="Enter tea price" class="form-control bg-gray-50">
                         <span class="text-danger">{{ $errors->first('total_price') }}</span>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="" class="col-md-3 col-form-label">Amount</label>
                     <div class="col-md-9">
-                        <input type="number" name="amount" id="title" placeholder="Enter amount" class="form-control bg-gray-50">
+                        <input type="number" name="amount" id="amount" placeholder="Enter amount" class="form-control bg-gray-50" autocomplete="off">
                         <span class="text-danger">{{ $errors->first('amount') }}</span>
                     </div>
                 </div>
@@ -63,3 +63,27 @@
        </div>
    </div>
 @endsection
+
+@push('footer-scripts')
+<script>
+    $(document).ready(function (){
+        $(document).on('change', '.test', function (){
+            let price_id = $(this).val();
+            let prices = {!! $prices !!};
+            let single_price = prices.find(price => {
+                        return price.id == price_id
+                    })
+            $('#tea_price').val(single_price.tea_price);
+        })
+
+        $(document).on('keyup change', '#amount', function (){
+            let price = $('#tea_price').val();
+            let amount = $(this).val();
+            let total_price = parseInt(amount)*parseInt(price);
+            $('#tea_price').val(total_price);
+
+        })
+    })
+ </script>
+ 
+@endpush

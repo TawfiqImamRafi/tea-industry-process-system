@@ -14,7 +14,7 @@ class SaleController extends Controller
     {
         $data = [
             'page_title' => 'Sales list',
-            'sales' => Sale::all()
+            'sales' => Sale::with('salePrice','salePrice.category','salePrice.company','farmer')->get()
         ];
 
         return view('dashboard.sale.index')->with(array_merge($this->data, $data));

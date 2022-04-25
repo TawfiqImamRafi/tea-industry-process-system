@@ -38,5 +38,6 @@
 <script src="{{ asset('assets/js/submitter.js') }}"></script>
 <script src="{{ asset('admin-assets/js/navigation.js') }}"></script>
 <script src="{{ asset('admin-assets/js/main.js') }}"></script>
+@stack('footer-scripts')
 </body>
 </html>
