@@ -23,7 +23,7 @@
                     </select>
                     <span class="text-danger">{{ $errors->first('farmer_id') }}</span>
                 </div>
-            </div> 
+            </div>
         <div class="form-group row">
                     <label for="" class="col-md-3 col-form-label">Company item</label>
                     <div class="col-md-9">
@@ -36,12 +36,12 @@
                         </select>
                         <span class="text-danger">{{ $errors->first('price_id') }}</span>
                     </div>
-                </div>              
+                </div>
                 <div class="form-group row">
                     <label for="" class="col-md-3 col-form-label">Tea price</label>
                     <div class="col-md-9">
-                        <input type="number" name="total_price" id="tea_price" placeholder="Enter tea price" class="form-control bg-gray-50">
-                        <span class="text-danger">{{ $errors->first('total_price') }}</span>
+                        <input type="number" name="tea_price" id="tea_price" placeholder="Enter tea price" class="form-control bg-gray-50" readonly>
+                        <span class="text-danger">{{ $errors->first('tea_price') }}</span>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -49,6 +49,13 @@
                     <div class="col-md-9">
                         <input type="number" name="amount" id="amount" placeholder="Enter amount" class="form-control bg-gray-50" autocomplete="off">
                         <span class="text-danger">{{ $errors->first('amount') }}</span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-md-3 col-form-label">Total price</label>
+                    <div class="col-md-9">
+                        <input type="number" name="total_price" id="total_price" placeholder="Enter tea price" class="form-control bg-gray-50" readonly>
+                        <span class="text-danger">{{ $errors->first('total_price') }}</span>
                     </div>
                 </div>
             <div class="form-group my-10 text-right">
@@ -80,10 +87,9 @@
             let price = $('#tea_price').val();
             let amount = $(this).val();
             let total_price = parseInt(amount)*parseInt(price);
-            $('#tea_price').val(total_price);
-
+            $('#total_price').val(total_price);
         })
     })
  </script>
- 
+
 @endpush
