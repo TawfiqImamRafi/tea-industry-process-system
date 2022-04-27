@@ -3,7 +3,7 @@
 @section('content')
     <div class="box">
         <div class="box-header with-action">
-            <h3 class="box-title">Company List</h3>
+            <h3 class="box-title">Factory List</h3>
             <a href="{{ route('company.create') }}" class="btn btn-sm btn-secondary float-right">Create new</a>
         </div>
         <div class="box-body">
@@ -43,7 +43,7 @@
                     @endforeach
                 @else
                     <tr>
-                        <td colspan="5">No company found</td>
+                        <td colspan="5">No factory found</td>
                     </tr>
                 @endif
                 </tbody>

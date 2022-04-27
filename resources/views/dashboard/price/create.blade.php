@@ -12,10 +12,10 @@
         {!! Form::open(['route' => 'price.store', 'method' => 'POST']) !!}
         <div class="box-body">
         <div class="form-group row">
-                    <label for="" class="col-md-3 col-form-label">Company</label>
+                    <label for="" class="col-md-3 col-form-label">Factory</label>
                     <div class="col-md-9">
                         <select class="form-select form-control bg-gray-50" id="" name="company_id">
-                            <option value="">Choose Company</option>
+                            <option value="">Choose Factory</option>
 
                             @foreach($companies as $company)
                                 <option value={{ $company->id }}>{{ $company->name }}</option>
@@ -37,18 +37,18 @@
                         <span class="text-danger">{{ $errors->first('title') }}</span>
                     </div>
                 </div>
-              
+
                 <div class="form-group row">
-                    <label for="" class="col-md-3 col-form-label">Tea price</label>
+                    <label for="" class="col-md-3 col-form-label">Tea price(per kg)</label>
                     <div class="col-md-9">
                         <input type="number" name="tea_price" id="title" placeholder="Enter tea price" class="form-control bg-gray-50">
                         <span class="text-danger">{{ $errors->first('tea_price') }}</span>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-md-3 col-form-label">Amount</label>
+                    <label for="" class="col-md-3 col-form-label">Weight(kg)</label>
                     <div class="col-md-9">
-                        <input type="number" name="amount" id="title" placeholder="Enter amount" class="form-control bg-gray-50">
+                        <input type="number" name="amount" id="title" placeholder="Enter weight" class="form-control bg-gray-50">
                         <span class="text-danger">{{ $errors->first('amount') }}</span>
                     </div>
                 </div>

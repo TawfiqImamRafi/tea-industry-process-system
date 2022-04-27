@@ -29,19 +29,19 @@
         <li class="treeview">
             <a href="javascript:void(0)">
                 <i class="bx bxs-check-circle text-green-400"></i>
-                <span>Company</span>
+                <span>Fatctory</span>
             </a>
             <ul class="treeview-menu">
                 <li>
                     <a href="{{ route('company.list') }}">
                         <i class="bx bx-check-circle"></i>
-                        <span>Companies</span>
+                        <span>Fatctories</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('company.create') }}">
                         <i class="bx bx-check-circle"></i>
-                        <span>Add Company</span>
+                        <span>Add Fatctory</span>
                     </a>
                 </li>
             </ul>
@@ -93,35 +93,35 @@
             </ul>
 
 
-        
+
         <li>
         <li class="treeview">
             <a href="javascript:void(0)">
                 <i class="bx bxs-check-circle text-green-400"></i>
-                <span>Sales</span>
+                <span>Purchase</span>
             </a>
             <ul class="treeview-menu">
                 <li>
                     <a href="{{ route('sale.list') }}">
                         <i class="bx bx-check-circle"></i>
-                        <span>Sales List</span>
+                        <span>Purchase List</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('sale.create') }}">
                         <i class="bx bx-check-circle"></i>
-                        <span>Create Sale</span>
+                        <span>Create Purchase</span>
                     </a>
                 </li>
             </ul>
 
 
-        
-        <li>
+
+        {{-- <li>
             <a href="#" class="dashboard">
                 <i class="bx bxs-envelope-open"></i>
                 <span>Contact List</span>
             </a>
-        </li>
+        </li> --}}
     </ul>
 </nav>

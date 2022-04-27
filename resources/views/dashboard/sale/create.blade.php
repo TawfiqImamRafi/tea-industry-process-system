@@ -6,8 +6,8 @@
        <div class="col-md-6 offset-3">
        <div class="box">
         <div class="box-header with-action">
-            <h5 class="box-title">Create new sale</h5>
-            <a href="{{ route('sale.list') }}" class="btn btn-sm btn-secondary float-right">Sales List</a>
+            <h5 class="box-title">New Purchase</h5>
+            <a href="{{ route('sale.list') }}" class="btn btn-sm btn-secondary float-right">Purchase List</a>
         </div>
         {!! Form::open(['route' => 'sale.store', 'method' => 'POST']) !!}
         <div class="box-body">
@@ -25,7 +25,7 @@
                 </div>
             </div>
         <div class="form-group row">
-                    <label for="" class="col-md-3 col-form-label">Company item</label>
+                    <label for="" class="col-md-3 col-form-label">Factory item</label>
                     <div class="col-md-9">
                         <select class="form-select form-control bg-gray-50 test" id="" name="price_id">
                             <option value="">Choose Item</option>
@@ -38,14 +38,14 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-md-3 col-form-label">Tea price</label>
+                    <label for="" class="col-md-3 col-form-label">Tea price(per kg)</label>
                     <div class="col-md-9">
                         <input type="number" name="tea_price" id="tea_price" placeholder="Enter tea price" class="form-control bg-gray-50" readonly>
                         <span class="text-danger">{{ $errors->first('tea_price') }}</span>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-md-3 col-form-label">Amount</label>
+                    <label for="" class="col-md-3 col-form-label">Weight(kg)</label>
                     <div class="col-md-9">
                         <input type="number" name="amount" id="amount" placeholder="Enter amount" class="form-control bg-gray-50" autocomplete="off">
                         <span class="text-danger">{{ $errors->first('amount') }}</span>

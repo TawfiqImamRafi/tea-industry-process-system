@@ -6,8 +6,8 @@
         <div class="col-md-6 offset-3">
         <div class="box">
         <div class="box-header with-action">
-            <h5 class="box-title">Update New Company</h5>
-            <a href="{{ route('company.list') }}" class="btn btn-sm btn-secondary float-right">Company List</a>
+            <h5 class="box-title">Update Factory</h5>
+            <a href="{{ route('company.list') }}" class="btn btn-sm btn-secondary float-right">Factory List</a>
         </div>
         {!! Form::open(['route' => ['company.update', $company->id], 'method' => 'PUT']) !!}
         <div class="box-body">
@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="" class="col-md-3 col-form-label">Address</label>
+                <label for="" class="col-md-3 col-form-label">Location</label>
                 <div class="col-md-9">
                     <input type="text" name="address" id="title" placeholder="Enter address" class="form-control bg-gray-50" value="{{$company->address}}">
                     <span class="text-danger">{{ $errors->first('address') }}</span>
