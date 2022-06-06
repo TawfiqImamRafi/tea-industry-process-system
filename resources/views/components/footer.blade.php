@@ -10,7 +10,7 @@
             <div class="col-lg-6 text-right">
                 <span class="mr-1">
                     Copyright
-                    <script>document.write(new Date().getFullYear())</script>© <a href="#" class="">Tawfiq Imam Rafi</a>
+                    <script>document.write(new Date().getFullYear())</script>© <a href="#" class=""></a>
                     All Rights Reserved.
                 </span>
             </div>

@@ -11,7 +11,7 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Company</th>
+                    <th>Factory</th>
                     <th>Tea category</th>
 
                     <th>Date</th>

@@ -3,7 +3,7 @@
 @section('content')
     <div class="box">
         <div class="box-header with-action">
-            <h3 class="box-title">Sales List</h3>
+            <h3 class="box-title">Purchase List</h3>
             <a href="{{ route('sale.create') }}" class="btn btn-sm btn-secondary float-right">Create new</a>
         </div>
         <div class="box-body">
@@ -11,11 +11,11 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Company</th>
+                    <th>Factory</th>
                     <th>Tea category</th>
                     <th>Farmer</th>
-                    <th>Tea price</th>
-                    <th>Amount</th>
+                    <th>Total price</th>
+                    <th>Weight</th>
                     <th>Created at</th>
                     <th></th>
                 </tr>
@@ -34,9 +34,9 @@
                             <td>{{ user_formatted_date($price->created_at) }}</td>
                             <td>
                                 <div class="action-el">
-                                    <a href="{{ route('sale.edit', $price->id) }}" class="btn btn-warning">
+                                    {{-- <a href="{{ route('sale.edit', $price->id) }}" class="btn btn-warning">
                                         <i class="bx bx-edit"></i>
-                                    </a>
+                                    </a> --}}
                                     {!! Form::open(['route' => ['sale.destroy', $price->id], 'method' => 'DELETE', 'class'=>'action-el']) !!}
                                     <button type="submit" class="btn btn-danger custom-btn-sm" onclick="deleteSubmit(this, event)" data-toggle="tooltip" title="Delete" data-placement="top">
                                         <i class="fas fa-trash"></i>
