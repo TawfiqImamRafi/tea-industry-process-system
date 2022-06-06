@@ -21,7 +21,7 @@ class CreateSalesTable extends Migration
             $table->integer('amount');
             $table->timestamps();
             $table->foreign('price_id')->references('id')->on('daily_prices')->onDelete('cascade');
-            $table->foreign('farmer_id')->references('id')->on('farmers')->onDelete('cascade');
+            $table->foreign('farmer_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

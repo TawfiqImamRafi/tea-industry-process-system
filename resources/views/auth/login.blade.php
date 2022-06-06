@@ -2,6 +2,11 @@
 
 @section('content')
     <div class="auth-box login-box">
+        @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
+            </div>
+        @endif
         <div class="auth-box-header">
             <h2 class="auth-box-title">Welcome Back!</h2>
         </div>
@@ -37,7 +42,10 @@
             {!! Form::close() !!}
         </div>
         <div class="auth-box-footer">
-
+            <div class="p-3">
+                <span>Have not registered yet?</span>
+                <a href="{{ route('register') }}">Register Now</a>
+            </div>
         </div>
     </div>
 @endsection

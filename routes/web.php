@@ -17,21 +17,28 @@ Route::get('/', function () {
     return redirect('dashboard');
 });
 
-Auth::routes();
+// Authentication Routes...
+Route::get('login', [App\Http\Controllers\Admin\Auth\LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [App\Http\Controllers\Admin\Auth\LoginController::class, 'login']);
+Route::post('logout', [App\Http\Controllers\Admin\Auth\LoginController::class, 'logout'])->name('logout');
+
+// Registration Routes...
+Route::get('register', [App\Http\Controllers\Admin\Auth\LoginController::class, 'showRegistrationForm'])->name('register');
+Route::post('register', [App\Http\Controllers\Admin\Auth\RegisterController::class, 'store'])->name('register.store');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('register', function () {
-    return redirect('login');
-});
+// Route::get('register', function () {
+//     return redirect('login');
+// });
 
-Route::get('home', function () {
-    return redirect('dashboard');
-});
+// Route::get('home', function () {
+//     return redirect('dashboard');
+// });
 
-Route::get('admin', function () {
-    return redirect('dashboard');
-});
+// Route::get('admin', function () {
+//     return redirect('dashboard');
+// });
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function ($router) {
     $router->get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');

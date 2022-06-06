@@ -21,7 +21,7 @@ class CreateDailyPricesTable extends Migration
             $table->integer('tea_price');
             $table->integer('amount');
             $table->timestamps();
-            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+            $table->foreign('company_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('tea_categories')->onDelete('cascade');
         });
     }
