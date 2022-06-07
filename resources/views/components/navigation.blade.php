@@ -6,7 +6,7 @@
                 <span>Dashboard</span>
             </a>
         </li>
-        <li class="treeview">
+        {{-- <li class="treeview">
             <a href="javascript:void(0)">
                 <i class="bx bxs-check-circle text-green-400"></i>
                 <span>Farmers</span>
@@ -45,7 +45,7 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </li> --}}
         <li class="treeview">
             <a href="javascript:void(0)">
                 <i class="bx bxs-check-circle text-green-400"></i>

@@ -129,10 +129,12 @@ class LoginController extends Controller
 
         //was any of those correct ?
         if (Auth::check()) {
-            if (Auth::user()->hasRole('employee')) {
-                return redirect()->intended('/employee/my-profile');
-            } else if (Auth::user()->hasRole('employer')) {
-                return redirect()->intended('/employer/company-profile');
+            if (Auth::user()->hasRole('company')) {
+                return redirect()->intended('/');
+            } else if (Auth::user()->hasRole('farmer')) {
+                return redirect()->intended('/');
+            } else if (Auth::user()->hasRole('wholesaler')) {
+                return redirect()->intended('/');
             }
 
             Auth::logout();
