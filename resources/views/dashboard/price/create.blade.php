@@ -12,15 +12,9 @@
         {!! Form::open(['route' => 'price.store', 'method' => 'POST']) !!}
         <div class="box-body">
         <div class="form-group row">
-                    <label for="" class="col-md-3 col-form-label">Factory</label>
+                    <label for="" class="col-md-3 col-form-label">Company name</label>
                     <div class="col-md-9">
-                        <select class="form-select form-control bg-gray-50" id="" name="company_id">
-                            <option value="">Choose Factory</option>
-
-                            @foreach($companies as $company)
-                                <option value={{ $company->id }}>{{ $company->name }}</option>
-                            @endforeach
-                        </select>
+                        <input type="text" name="company_name" id="title" placeholder="Enter company name" class="form-control bg-gray-50">
                         <span class="text-danger">{{ $errors->first('title') }}</span>
                     </div>
                 </div>

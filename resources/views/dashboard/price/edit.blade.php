@@ -14,14 +14,8 @@
         <div class="form-group row">
                     <label for="" class="col-md-3 col-form-label">Factory</label>
                     <div class="col-md-9">
-                        <select class="form-select form-control bg-gray-50" id="" name="company_id">
-                            <option value="">Choose Factory</option>
-
-                            @foreach($companies as $company)
-                                <option value={{ $company->id }} {{ $company->id == $price->company_id ? 'selected' : "" }} >{{ $company->name }}</option>
-                            @endforeach
-                        </select>
-                        <span class="text-danger">{{ $errors->first('company_id') }}</span>
+                    <input type="text" name="company_name" value={{$price->company_name}}  id="title" placeholder="Enter company name" class="form-control bg-gray-50">
+                        <span class="text-danger">{{ $errors->first('company_name') }}</span>
                     </div>
                 </div>
         <div class="form-group row">

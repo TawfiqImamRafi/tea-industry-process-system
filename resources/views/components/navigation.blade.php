@@ -46,6 +46,22 @@
                 </li>
             </ul>
         </li> --}}
+        @if(Auth::user()->hasRole('company'))
+        <li class="treeview">
+            <a href="javascript:void(0)">
+                <i class="bx bxs-check-circle text-green-400"></i>
+                <span>Pickup</span>
+            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <a href="{{ route('price.pickuplist') }}">
+                        <i class="bx bx-check-circle"></i>
+                        <span>Requests</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        @endif
         <li class="treeview">
             <a href="javascript:void(0)">
                 <i class="bx bxs-check-circle text-green-400"></i>
@@ -66,6 +82,7 @@
                 </li>
             </ul>
         </li>
+       
         <li class="treeview">
             <a href="javascript:void(0)">
                 <i class="bx bxs-check-circle text-green-400"></i>
@@ -78,12 +95,15 @@
                         <span>Tea Prices</span>
                     </a>
                 </li>
+                @if(Auth::user()->hasRole('company'))
                 <li>
                     <a href="{{ route('price.create') }}">
                         <i class="bx bx-check-circle"></i>
                         <span>Add Price</span>
                     </a>
                 </li>
+                @endif
+               
                 <li>
                     <a href="{{ route('price.today') }}">
                         <i class="bx bx-check-circle"></i>

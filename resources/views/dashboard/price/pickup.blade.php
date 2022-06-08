@@ -3,17 +3,14 @@
 @section('content')
     <div class="box">
         <div class="box-header with-action">
-            <h3 class="box-title">Today's Price List</h3>
-            @if(Auth::user()->hasRole('company'))
-                <a href="{{ route('price.create') }}" class="btn btn-sm btn-secondary float-right">Create new</a>
-            @endif
+            <h3 class="box-title">Pickup requests</h3>
         </div>
         <div class="box-body">
             <table class="table table-bordered table-hover table-responsive-lg">
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Factory</th>
+                    <th>Company</th>
                     <th>Tea category</th>
 
                     <th>Date</th>
@@ -32,19 +29,7 @@
                             <td>{{ user_formatted_date($price->date) }}</td>
                             <td>{{ $price->tea_price }}</td>
                             <td>{{ $price->amount }}</td>
-                         @if(Auth::user()->hasRole('farmer'))
-                         <td>
-                                <div class="action-el">
-                                <a href="{{ route('price.pickup', $price->id) }}" class="btn btn-info">
-                                 @if($price->pickup)
-                                        Cancell Pickup Request
-                                        @else
-                                        Send Pickup Request
-                                        @endif
-                                    </a>     
-                                </div>
-                            </td>
-                         @endif
+                         
                         </tr>
                     @endforeach
                 @else
@@ -60,3 +45,4 @@
     </div>
 
 @endsection
+

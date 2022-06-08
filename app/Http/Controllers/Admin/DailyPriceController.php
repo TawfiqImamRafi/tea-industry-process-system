@@ -22,6 +22,17 @@ class DailyPriceController extends Controller
         return view('dashboard.price.index')->with(array_merge($this->data, $data));
     }
 
+    public function pickuplist()
+    {
+        $data = [
+            'page_title' => 'Pickup  request',
+            'prices' => DailyPrice::where("pickup",true)->get(),
+
+        ];
+
+        return view('dashboard.price.pickup')->with(array_merge($this->data, $data));
+    }
+
     public function create()
     {
         $data = [
@@ -36,7 +47,7 @@ class DailyPriceController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'company_id' => 'required',
+            'company_name' => 'required',
             'tea_price' => 'required',
             'amount' => 'required',
             'category_id' => 'required',
@@ -45,8 +56,9 @@ class DailyPriceController extends Controller
         $this->validate($request, $rules);
 
         $Company = new DailyPrice();
-        $Company->company_id = $request->get('company_id');
+        $Company->company_name = $request->get('company_name');
         $Company->category_id = $request->get('category_id');
+        $Company->pickup = false;
         $Company->date = Carbon::now();
         $Company->tea_price = $request->get('tea_price');
         $Company->amount = $request->get('amount');
@@ -78,11 +90,21 @@ class DailyPriceController extends Controller
 
         return view('dashboard.price.edit')->with(array_merge($this->data, $data));
     }
+    public function pickup($id)
+    {
+        $Company = DailyPrice::find($id);
+        $Company->pickup = !$Company->pickup;
+        $Company->save();
+
+        return back();
+       
+
+    }
 
     public function update(Request $request, $id)
     {
         $rules = [
-            'company_id' => 'required',
+            'company_name' => 'required',
             'tea_price' => 'required',
             'amount' => 'required',
             'category_id' => 'required',
@@ -91,7 +113,7 @@ class DailyPriceController extends Controller
         $this->validate($request, $rules);
 
         $Company = DailyPrice::find($id);
-        $Company->company_id = $request->get('company_id');
+        $Company->company_name = $request->get('company_name');
         $Company->category_id = $request->get('category_id');
         $Company->tea_price = $request->get('tea_price');
         $Company->amount = $request->get('amount');
