@@ -32,6 +32,56 @@ class DailyPriceController extends Controller
 
         return view('dashboard.price.pickup')->with(array_merge($this->data, $data));
     }
+    public function purchaselist()
+    {
+        $data = [
+            'page_title' => 'Pickup  request',
+            'prices' => DailyPrice::where("purchase",2)->get(),
+
+        ];
+
+        return view('dashboard.price.purchaselist')->with(array_merge($this->data, $data));
+    }
+    public function confirmpurchase()
+    {
+        $data = [
+            'page_title' => 'Pickup  request',
+            'prices' => DailyPrice::where("purchase",3)->get(),
+
+        ];
+
+        return view('dashboard.price.confirmpurchase')->with(array_merge($this->data, $data));
+    }
+    public function purchase($id)
+    {
+        $Company = DailyPrice::find($id);
+    
+        if($Company->purchase == 1){
+            $Company->purchase = 2;
+            $Company->save(); 
+        }
+        else{
+            $Company->purchase = 1;
+            $Company->save(); 
+        }
+
+        return back();
+
+       
+    }
+    public function purchaseconfirm($id)
+    {
+        $Company = DailyPrice::find($id);
+    
+   
+            $Company->purchase = 3;
+            $Company->save(); 
+     
+
+        return back();
+
+       
+    }
 
     public function create()
     {

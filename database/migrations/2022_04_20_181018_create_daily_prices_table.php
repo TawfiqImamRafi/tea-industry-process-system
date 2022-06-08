@@ -21,6 +21,7 @@ class CreateDailyPricesTable extends Migration
             $table->integer('tea_price');
             $table->integer('amount');
             $table->boolean('pickup')->default(false);
+            $table->integer('purchase')->default(1);
             $table->timestamps();
             $table->foreign('category_id')->references('id')->on('tea_categories')->onDelete('cascade');
         });

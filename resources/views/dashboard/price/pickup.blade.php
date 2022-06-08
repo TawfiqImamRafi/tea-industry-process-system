@@ -29,6 +29,19 @@
                             <td>{{ user_formatted_date($price->date) }}</td>
                             <td>{{ $price->tea_price }}</td>
                             <td>{{ $price->amount }}</td>
+                            @if($price->purchase == 3)  
+                            <td>Already purchased</td>
+                            @else
+                            <td><a href="{{route('price.purchase',$price->id)}}" class="btn btn-sm btn-secondary">
+                            @if($price->purchase == 1)  
+                            Purchase
+                            @endif  
+                            @if($price->purchase == 2)  
+                            cancell purchase request
+                            @endif  
+                            </a></td>
+                            @endif 
+                          
                          
                         </tr>
                     @endforeach

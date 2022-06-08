@@ -64,6 +64,10 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function ($route
     $router->group(['prefix' => 'daily-price'], function ($router) {
         $router->get('/', [App\Http\Controllers\Admin\DailyPriceController::class, 'index'])->name('price.list');
         $router->get('pickuplist', [App\Http\Controllers\Admin\DailyPriceController::class, 'pickuplist'])->name('price.pickuplist');
+        $router->get('purchase/{id}', [App\Http\Controllers\Admin\DailyPriceController::class, 'purchase'])->name('price.purchase');
+        $router->get('purchaseconfirm/{id}', [App\Http\Controllers\Admin\DailyPriceController::class, 'purchaseconfirm'])->name('price.purchaseconfirm');
+        $router->get('purchaselist', [App\Http\Controllers\Admin\DailyPriceController::class, 'purchaselist'])->name('price.purchaselist');
+        $router->get('confirmpurchase', [App\Http\Controllers\Admin\DailyPriceController::class, 'confirmpurchase'])->name('price.confirmpurchase');
         $router->get('/create', [App\Http\Controllers\Admin\DailyPriceController::class, 'create'])->name('price.create');
         $router->post('/create', [App\Http\Controllers\Admin\DailyPriceController::class, 'store'])->name('price.store');
         $router->get('/edit/{id}', [App\Http\Controllers\Admin\DailyPriceController::class, 'edit'])->name('price.edit');
@@ -82,6 +86,15 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function ($route
     });
     $router->group(['prefix' => 'sale'], function ($router) {
         $router->get('/', [App\Http\Controllers\Admin\SaleController::class, 'index'])->name('sale.list');
+        $router->get('/create', [App\Http\Controllers\Admin\SaleController::class, 'create'])->name('sale.create');
+        $router->post('/create', [App\Http\Controllers\Admin\SaleController::class, 'store'])->name('sale.store');
+        $router->get('/edit/{id}', [App\Http\Controllers\Admin\SaleController::class, 'edit'])->name('sale.edit');
+        $router->put('/edit/{id}', [App\Http\Controllers\Admin\SaleController::class, 'update'])->name('sale.update');
+        $router->delete('/destroy/{id}', [App\Http\Controllers\Admin\SaleController::class, 'destroy'])->name('sale.destroy');
+    });
+
+    $router->group(['prefix' => 'purchase'], function ($router) {
+        $router->get('/', [App\Http\Controllers\Admin\SaleController::class, 'index'])->name('purchase.index');
         $router->get('/create', [App\Http\Controllers\Admin\SaleController::class, 'create'])->name('sale.create');
         $router->post('/create', [App\Http\Controllers\Admin\SaleController::class, 'store'])->name('sale.store');
         $router->get('/edit/{id}', [App\Http\Controllers\Admin\SaleController::class, 'edit'])->name('sale.edit');

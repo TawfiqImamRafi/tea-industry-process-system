@@ -115,25 +115,28 @@
 
 
         <li>
-        <li class="treeview">
+
+      @if(Auth::user()->hasRole("farmer"))
+      <li class="treeview">
             <a href="javascript:void(0)">
                 <i class="bx bxs-check-circle text-green-400"></i>
                 <span>Purchase</span>
             </a>
             <ul class="treeview-menu">
                 <li>
-                    <a href="{{ route('sale.list') }}">
+                    <a href="{{ route('price.purchaselist') }}">
                         <i class="bx bx-check-circle"></i>
-                        <span>Purchase List</span>
+                        <span>Purchase request</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('sale.create') }}">
+                    <a href="{{ route('price.confirmpurchase') }}">
                         <i class="bx bx-check-circle"></i>
-                        <span>Create Purchase</span>
+                        <span>Confirmed request</span>
                     </a>
                 </li>
             </ul>
+      @endif
 
 
 
