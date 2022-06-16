@@ -32,13 +32,8 @@
                             @if($price->purchase == 3)  
                             <td>Already purchased</td>
                             @else
-                            <td><a href="{{route('price.purchase',$price->id)}}" class="btn btn-sm btn-secondary">
-                            @if($price->purchase == 1)  
-                            Purchase
-                            @endif  
-                            @if($price->purchase == 2)  
-                            cancell purchase request
-                            @endif  
+                            <td><a href="{{route('purchase.index',$price->id)}}" class="btn btn-sm btn-secondary">
+                         purchase
                             </a></td>
                             @endif 
                           

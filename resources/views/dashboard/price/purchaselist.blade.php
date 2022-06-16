@@ -30,13 +30,7 @@
                     <td>{{ $price->tea_price }}</td>
                     <td>{{ $price->amount }}</td>
 
-                    <td><a href="{{route('price.purchaseconfirm',$price->id)}}" class="btn btn-sm btn-secondary">
-                            @if($price->purchase !=3)
-                            confirm
-                            @endif
-                            @if($price->purchase ==3)
-                            done
-                            @endif
+                    <td><a href="{{route('price.index')}}" class="btn btn-sm btn-secondary">
                         </a></td>
 
 

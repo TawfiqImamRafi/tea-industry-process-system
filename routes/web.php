@@ -94,9 +94,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function ($route
     });
 
     $router->group(['prefix' => 'purchase'], function ($router) {
-        $router->get('/', [App\Http\Controllers\Admin\SaleController::class, 'index'])->name('purchase.index');
-        $router->get('/create', [App\Http\Controllers\Admin\SaleController::class, 'create'])->name('sale.create');
-        $router->post('/create', [App\Http\Controllers\Admin\SaleController::class, 'store'])->name('sale.store');
+        $router->get('/{id}', [App\Http\Controllers\Admin\PurchaseController::class, 'index'])->name('purchase.index');
+        $router->post('/create', [App\Http\Controllers\Admin\PurchaseController::class, 'store'])->name('purchase.store');
         $router->get('/edit/{id}', [App\Http\Controllers\Admin\SaleController::class, 'edit'])->name('sale.edit');
         $router->put('/edit/{id}', [App\Http\Controllers\Admin\SaleController::class, 'update'])->name('sale.update');
         $router->delete('/destroy/{id}', [App\Http\Controllers\Admin\SaleController::class, 'destroy'])->name('sale.destroy');

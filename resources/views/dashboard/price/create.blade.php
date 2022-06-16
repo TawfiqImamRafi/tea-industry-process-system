@@ -12,11 +12,8 @@
         {!! Form::open(['route' => 'price.store', 'method' => 'POST']) !!}
         <div class="box-body">
         <div class="form-group row">
-                    <label for="" class="col-md-3 col-form-label">Company name</label>
-                    <div class="col-md-9">
-                        <input type="text" name="company_name" id="title" placeholder="Enter company name" class="form-control bg-gray-50">
-                        <span class="text-danger">{{ $errors->first('title') }}</span>
-                    </div>
+                        <input type="text" name="user_id" value="{{Auth::id()}}" hidden>
+                    
                 </div>
         <div class="form-group row">
                     <label for="" class="col-md-3 col-form-label">Tea Category</label>

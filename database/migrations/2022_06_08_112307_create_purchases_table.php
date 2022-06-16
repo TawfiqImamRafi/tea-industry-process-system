@@ -15,10 +15,13 @@ class CreatePurchasesTable extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
-            $table->id();
-            $table->id();
-            $table->id();
-            $table->id();
+            $table->integer('daily_prices_id');
+            $table->integer("farmer_id");
+            $table->integer("amount");
+            $table->integer("deduct");
+            $table->integer("deduct_amount");
+            $table->integer("grand_total");
+          
             $table->timestamps();
         });
     }

@@ -97,7 +97,7 @@ class DailyPriceController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'company_name' => 'required',
+            'user_id' => 'required',
             'tea_price' => 'required',
             'amount' => 'required',
             'category_id' => 'required',
@@ -106,7 +106,7 @@ class DailyPriceController extends Controller
         $this->validate($request, $rules);
 
         $Company = new DailyPrice();
-        $Company->company_name = $request->get('company_name');
+        $Company->company_name = $request->get('user_id');
         $Company->category_id = $request->get('category_id');
         $Company->pickup = false;
         $Company->date = Carbon::now();
