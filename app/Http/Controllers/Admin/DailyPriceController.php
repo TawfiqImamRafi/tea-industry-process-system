@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Models\DailyPrice;
 use App\Models\TeaCategory;
+use App\Models\Pickup;
 use Carbon\Carbon;
+use Auth;
 
 class DailyPriceController extends Controller
 {
@@ -26,7 +28,7 @@ class DailyPriceController extends Controller
     {
         $data = [
             'page_title' => 'Pickup  request',
-            'prices' => DailyPrice::where("pickup",true)->get(),
+            'prices' => Pickup::all(),
 
         ];
 
@@ -140,14 +142,24 @@ class DailyPriceController extends Controller
 
         return view('dashboard.price.edit')->with(array_merge($this->data, $data));
     }
-    public function pickup($id)
+    public function createPickup($id)
     {
-        $Company = DailyPrice::find($id);
-        $Company->pickup = !$Company->pickup;
-        $Company->save();
+        $price = DailyPrice::find($id);
+        $price->pickup = !$price->pickup;
+        if($price->save()){
+            if($price->pickup == 1){
+                $pickup = new Pickup();
+                $pickup->farmer_id = Auth::user()->id;
+                $pickup->daily_prices_id = $id;
+                $pickup->save();
+            }else{
+                $pickup = Pickup::where('daily_prices_id',$id)->first();
+                $pickup->delete();
+            }
+        }
 
-        return back();
-       
+
+        return back();     
 
     }
 

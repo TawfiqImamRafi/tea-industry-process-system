@@ -24,12 +24,12 @@
                     @foreach ($prices as $key => $price)
                         <tr>
                             <td>{{ $key+1 }}</td>
-                            <td>{{ $price->company_name }}</td>
-                            <td>{{ $price->category->name }}</td>
-                            <td>{{ user_formatted_date($price->date) }}</td>
-                            <td>{{ $price->tea_price }}</td>
-                            <td>{{ $price->amount }}</td>
-                            @if($price->purchase == 3)  
+                            <td>{{ $price->dailyPrice->company->first_name }}</td>
+                            <td>{{ $price->dailyPrice->category->name }}</td>
+                            <td>{{ user_formatted_date($price->dailyPrice->date) }}</td>
+                            <td>{{ $price->dailyPrice->tea_price }}</td>
+                            <td>{{ $price->dailyPrice->amount }}</td>
+                            @if($price->dailyPrice->purchase == 3)  
                             <td>Already purchased</td>
                             @else
                             <td><a href="{{route('purchase.index',$price->id)}}" class="btn btn-sm btn-secondary">

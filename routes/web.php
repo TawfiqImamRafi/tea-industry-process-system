@@ -71,7 +71,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function ($route
         $router->get('/create', [App\Http\Controllers\Admin\DailyPriceController::class, 'create'])->name('price.create');
         $router->post('/create', [App\Http\Controllers\Admin\DailyPriceController::class, 'store'])->name('price.store');
         $router->get('/edit/{id}', [App\Http\Controllers\Admin\DailyPriceController::class, 'edit'])->name('price.edit');
-        $router->get('/pickup/{id}', [App\Http\Controllers\Admin\DailyPriceController::class, 'pickup'])->name('price.pickup');
+        $router->get('/pickup/{id}', [App\Http\Controllers\Admin\DailyPriceController::class, 'createPickup'])->name('price.pickup');
         $router->put('/edit/{id}', [App\Http\Controllers\Admin\DailyPriceController::class, 'update'])->name('price.update');
         $router->delete('/destroy/{id}', [App\Http\Controllers\Admin\DailyPriceController::class, 'destroy'])->name('price.destroy');
         $router->get('/today', [App\Http\Controllers\Admin\DailyPriceController::class, 'today'])->name('price.today');
@@ -96,8 +96,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function ($route
     $router->group(['prefix' => 'purchase'], function ($router) {
         $router->get('/{id}', [App\Http\Controllers\Admin\PurchaseController::class, 'index'])->name('purchase.index');
         $router->post('/create', [App\Http\Controllers\Admin\PurchaseController::class, 'store'])->name('purchase.store');
-        $router->get('/edit/{id}', [App\Http\Controllers\Admin\SaleController::class, 'edit'])->name('sale.edit');
-        $router->put('/edit/{id}', [App\Http\Controllers\Admin\SaleController::class, 'update'])->name('sale.update');
-        $router->delete('/destroy/{id}', [App\Http\Controllers\Admin\SaleController::class, 'destroy'])->name('sale.destroy');
+        // $router->get('/edit/{id}', [App\Http\Controllers\Admin\SaleController::class, 'edit'])->name('sale.edit');
+        // $router->put('/edit/{id}', [App\Http\Controllers\Admin\SaleController::class, 'update'])->name('sale.update');
+        // $router->delete('/destroy/{id}', [App\Http\Controllers\Admin\SaleController::class, 'destroy'])->name('sale.destroy');
     });
 });

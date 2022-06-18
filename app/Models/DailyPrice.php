@@ -11,7 +11,7 @@ class DailyPrice extends Model
     use HasFactory;
 
     public function company(){
-        return $this->belongsTo(Company::class,'company_id','id');
+        return $this->belongsTo(User::class,'company_name','id');
     }
 
     public function category(){

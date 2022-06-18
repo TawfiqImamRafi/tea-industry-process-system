@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Purchase;
 use App\Models\DailyPrice;
+use App\Models\Pickup;
 
 class PurchaseController extends Controller
 {
@@ -18,7 +19,7 @@ class PurchaseController extends Controller
     public function index($id)
     {
         return view("dashboard.purchase.create",[
-            "price"=> DailyPrice::find($id), 
+            "price"=> Pickup::find($id),
         ]);
     }
 
@@ -48,20 +49,15 @@ class PurchaseController extends Controller
         $purchase->farmer_id = $request->get('farmer_id');
         $purchase->amount = $request->get('amount');
         $purchase->deduct = $request->get('deduct');
-
-        $deduct_amount=$request->get('amount') - ($request->get('amount') * $request->get('deduct'))/100;
-        
-        $purchase->deduct_amount = $deduct_amount;
-        $grand_total=$request->get('tea_price')*$deduct_amount;
-        $purchase->grand_total = $grand_total;
+        $purchase->deduct_amount = $request->get('deduct_amount');
+        $purchase->grand_total = $request->get('grand_total');
        
 
         if ($purchase->save()) {
             return response()->json([
                 'type' => 'success',
                 'title' => 'Success',
-                'message' => 'Purchase successfully',
-                'redirect' => route('purchase.index')
+                'message' => 'Purchase successfully'
             ]);
         }
 
