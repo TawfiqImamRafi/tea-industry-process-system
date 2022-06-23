@@ -91,11 +91,13 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function ($route
         $router->get('/edit/{id}', [App\Http\Controllers\Admin\SaleController::class, 'edit'])->name('sale.edit');
         $router->put('/edit/{id}', [App\Http\Controllers\Admin\SaleController::class, 'update'])->name('sale.update');
         $router->delete('/destroy/{id}', [App\Http\Controllers\Admin\SaleController::class, 'destroy'])->name('sale.destroy');
+        $router->get('/list', [App\Http\Controllers\Admin\PurchaseController::class, 'saleList'])->name('sales.list');
     });
 
     $router->group(['prefix' => 'purchase'], function ($router) {
-        $router->get('/{id}', [App\Http\Controllers\Admin\PurchaseController::class, 'index'])->name('purchase.index');
-        $router->post('/create', [App\Http\Controllers\Admin\PurchaseController::class, 'store'])->name('purchase.store');
+        $router->get('/create/{id}', [App\Http\Controllers\Admin\PurchaseController::class, 'index'])->name('purchase.index');
+        $router->post('/store', [App\Http\Controllers\Admin\PurchaseController::class, 'store'])->name('purchase.store');
+        $router->get('/list', [App\Http\Controllers\Admin\PurchaseController::class, 'purchaseList'])->name('purchase.list');
         // $router->get('/edit/{id}', [App\Http\Controllers\Admin\SaleController::class, 'edit'])->name('sale.edit');
         // $router->put('/edit/{id}', [App\Http\Controllers\Admin\SaleController::class, 'update'])->name('sale.update');
         // $router->delete('/destroy/{id}', [App\Http\Controllers\Admin\SaleController::class, 'destroy'])->name('sale.destroy');

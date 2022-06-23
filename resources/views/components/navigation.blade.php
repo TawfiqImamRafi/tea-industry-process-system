@@ -120,10 +120,10 @@
       <li class="treeview">
             <a href="javascript:void(0)">
                 <i class="bx bxs-check-circle text-green-400"></i>
-                <span>Purchase</span>
+                <span>Sale</span>
             </a>
             <ul class="treeview-menu">
-                <li>
+                {{-- <li>
                     <a href="{{ route('price.purchaselist') }}">
                         <i class="bx bx-check-circle"></i>
                         <span>Purchase request</span>
@@ -133,6 +133,27 @@
                     <a href="{{ route('price.confirmpurchase') }}">
                         <i class="bx bx-check-circle"></i>
                         <span>Confirmed request</span>
+                    </a>
+                </li> --}}
+                <li>
+                    <a href="{{ route('sales.list') }}">
+                        <i class="bx bx-check-circle"></i>
+                        <span>Sale List</span>
+                    </a>
+                </li>
+            </ul>
+      @endif
+      @if(Auth::user()->hasRole("company"))
+      <li class="treeview">
+            <a href="javascript:void(0)">
+                <i class="bx bxs-check-circle text-green-400"></i>
+                <span>Purchase</span>
+            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <a href="{{ route('purchase.list') }}">
+                        <i class="bx bx-check-circle"></i>
+                        <span>Purchase List</span>
                     </a>
                 </li>
             </ul>

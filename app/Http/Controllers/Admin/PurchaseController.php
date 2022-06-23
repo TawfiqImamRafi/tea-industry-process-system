@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Purchase;
 use App\Models\DailyPrice;
 use App\Models\Pickup;
+use Auth;
 
 class PurchaseController extends Controller
 {
@@ -20,6 +21,26 @@ class PurchaseController extends Controller
     {
         return view("dashboard.purchase.create",[
             "price"=> Pickup::find($id),
+        ]);
+    }
+
+    public function saleList()
+    {
+        return view("dashboard.purchase.index",[
+            "sales"=> Purchase::where('farmer_id',Auth::user()->id)->get(),
+            "total_sale"=> Purchase::where('farmer_id',Auth::user()->id)->sum('grand_total'),
+        ]);
+    }
+
+    public function purchaseList()
+    {
+        return view("dashboard.purchase.purchaselist",[
+            "purchases"=> Purchase::with('dailyPrice','dailyPrice.company','dailyPrice.category')->whereHas('dailyPrice', function($q){
+                $q->where('company_name', Auth::user()->id);
+            })->get(),
+            "total_purchase"=> Purchase::with('dailyPrice')->whereHas('dailyPrice', function($q){
+                $q->where('company_name', Auth::user()->id);
+            })->sum('grand_total'),
         ]);
     }
 
