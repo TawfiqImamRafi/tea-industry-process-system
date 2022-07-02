@@ -102,4 +102,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function ($route
         // $router->put('/edit/{id}', [App\Http\Controllers\Admin\SaleController::class, 'update'])->name('sale.update');
         // $router->delete('/destroy/{id}', [App\Http\Controllers\Admin\SaleController::class, 'destroy'])->name('sale.destroy');
     });
+    $router->group(['prefix' => 'wholesaler'], function ($router) {
+        $router->get('company/list', [App\Http\Controllers\Admin\WholesalerController::class, 'companyList'])->name('wholesaler.company');
+        $router->get('tea/category', [App\Http\Controllers\Admin\WholesalerController::class, 'teaCategory'])->name('tea.category');
+    });
 });

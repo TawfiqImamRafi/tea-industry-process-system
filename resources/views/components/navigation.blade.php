@@ -62,6 +62,8 @@
             </ul>
         </li>
         @endif
+
+        @if(!Auth::user()->role('wholesaler'))
         <li class="treeview">
             <a href="javascript:void(0)">
                 <i class="bx bxs-check-circle text-green-400"></i>
@@ -82,7 +84,9 @@
                 </li>
             </ul>
         </li>
-       
+
+        @endif
+        @if(!Auth::user()->role('wholesaler'))
         <li class="treeview">
             <a href="javascript:void(0)">
                 <i class="bx bxs-check-circle text-green-400"></i>
@@ -95,7 +99,8 @@
                         <span>Tea Prices</span>
                     </a>
                 </li>
-                @if(Auth::user()->hasRole('company'))
+                @endif
+                @if(!Auth::user()->hasRole('company') && !Auth::user()->hasRole('wholesaler'))
                 <li>
                     <a href="{{ route('price.create') }}">
                         <i class="bx bx-check-circle"></i>
@@ -103,7 +108,7 @@
                     </a>
                 </li>
                 @endif
-               
+                @if(!Auth::user()->role('wholesaler'))
                 <li>
                     <a href="{{ route('price.today') }}">
                         <i class="bx bx-check-circle"></i>
@@ -115,7 +120,25 @@
 
 
         <li>
+            @endif
 
+
+
+            @if(Auth::user()->role('wholesaler'))
+            <li>
+                    <a href="{{ route('wholesaler.company') }}">
+                        <i class="bx bx-check-circle"></i>
+                        <span>Company list</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('tea.category') }}">
+                        <i class="bx bx-check-circle"></i>
+                        <span>Tea leaf categories</span>
+                    </a>
+                </li>
+
+            @endif
       @if(Auth::user()->hasRole("farmer"))
       <li class="treeview">
             <a href="javascript:void(0)">
