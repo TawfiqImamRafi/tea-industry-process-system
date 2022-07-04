@@ -8,43 +8,43 @@
         <div class="box-body">
             <table class="table table-bordered table-hover table-responsive-lg">
                 <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Company</th>
-                    <th>Tea category</th>
+                    <tr>
+                        <th>#</th>
+                        <th>Company</th>
+                        <th>Tea category</th>
 
-                    <th>Date</th>
-                    <th>Tea price</th>
-                    <th>Amount</th>
-                    <th></th>
-                </tr>
+                        <th>Date</th>
+                        <th>Tea price</th>
+                        <th>Amount</th>
+                        <th></th>
+                    </tr>
                 </thead>
                 <tbody>
-                @if($prices->isNotEmpty())
-                    @foreach ($prices as $key => $price)
+                    @if ($prices->isNotEmpty())
+                        @foreach ($prices as $key => $price)
+                            <tr>
+                                <td>{{ $key + 1 }}</td>
+                                <td>{{ $price->dailyPrice->company->first_name }}</td>
+                                <td>{{ $price->dailyPrice->category->name }}</td>
+                                <td>{{ user_formatted_date($price->dailyPrice->date) }}</td>
+                                <td>{{ $price->dailyPrice->tea_price }}</td>
+                                <td>{{ $price->dailyPrice->amount }}</td>
+                                @if ($price->dailyPrice->purchase == 3)
+                                    <td>Already purchased</td>
+                                @else
+                                    <td><a href="{{ route('purchase.index', $price->id) }}" class="btn btn-sm btn-secondary">
+                                            purchase
+                                        </a></td>
+                                @endif
+
+
+                            </tr>
+                        @endforeach
+                    @else
                         <tr>
-                            <td>{{ $key+1 }}</td>
-                            <td>{{ $price->dailyPrice->company->first_name }}</td>
-                            <td>{{ $price->dailyPrice->category->name }}</td>
-                            <td>{{ user_formatted_date($price->dailyPrice->date) }}</td>
-                            <td>{{ $price->dailyPrice->tea_price }}</td>
-                            <td>{{ $price->dailyPrice->amount }}</td>
-                            @if($price->dailyPrice->purchase == 3)  
-                            <td>Already purchased</td>
-                            @else
-                            <td><a href="{{route('purchase.index',$price->id)}}" class="btn btn-sm btn-secondary">
-                         purchase
-                            </a></td>
-                            @endif 
-                          
-                         
+                            <td colspan="5">No price found</td>
                         </tr>
-                    @endforeach
-                @else
-                    <tr>
-                        <td colspan="5">No price found</td>
-                    </tr>
-                @endif
+                    @endif
                 </tbody>
             </table>
         </div>
@@ -53,4 +53,3 @@
     </div>
 
 @endsection
-
