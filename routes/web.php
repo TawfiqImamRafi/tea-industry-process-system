@@ -105,5 +105,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function ($route
     $router->group(['prefix' => 'wholesaler'], function ($router) {
         $router->get('company/list', [App\Http\Controllers\Admin\WholesalerController::class, 'companyList'])->name('wholesaler.company');
         $router->get('tea/category', [App\Http\Controllers\Admin\WholesalerController::class, 'teaCategory'])->name('tea.category');
+        $router->get('purchase/list', [App\Http\Controllers\Admin\WholesalerController::class, 'purchaselist'])->name('purchase.list');
+        $router->get('tea/purchase/{id}', [App\Http\Controllers\Admin\WholesalerController::class, 'purchase'])->name('tea.purchase');
+        $router->post('tea/purchase/store', [App\Http\Controllers\Admin\WholesalerController::class, 'store'])->name('tea.purchase.store');
     });
 });
