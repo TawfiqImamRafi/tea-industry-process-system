@@ -134,6 +134,12 @@
                     <span>Tea leaf categories</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('purchase.list') }}">
+                    <i class="bx bx-check-circle"></i>
+                    <span>Purchase.list</span>
+                </a>
+            </li>
         @endif
         @if (Auth::user()->hasRole('farmer'))
             <li class="treeview">

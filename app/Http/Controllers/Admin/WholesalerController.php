@@ -24,8 +24,8 @@ class WholesalerController extends Controller
 
     }
     public function purchaselist(){
-        return view('dashboard.wholesaler.tea_category',[
-            'teaCategory'=> TeaCategory::all(),
+        return view('dashboard.wholesaler.purchaselist',[
+            'purchases'=> WholesalerPurchase::all(),
         ]);
 
     }

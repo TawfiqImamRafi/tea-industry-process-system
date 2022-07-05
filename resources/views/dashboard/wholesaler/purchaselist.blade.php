@@ -11,17 +11,22 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Description</th>
+                    <th>Company</th>
+                    <th>Tea category</th>
+                    <th>Amount</th>
+                    <th>Price</th>
+                    <th>Total</th>
                 </tr>
                 </thead>
                 <tbody>
-                    @foreach ($teaCategory as $key => $tea)
+                    @foreach ($purchases as $key => $purchase)
                         <tr>
                             <td>{{ $key+1 }}</td>
-                            <td>{{ $tea->name }}</td>
-                            <td>{{ $tea->description }}</td>
-                            <td><a href="{{route('tea.purchase',$tea->id)}}" class="btn btn-sm btn-info">Purchase</a></td>
+                            <td>{{ $purchase->company_name }}</td>
+                            <td>{{ $purchase->tea_category }}</td>
+                            <td>{{ $purchase->price }}</td>
+                            <td>{{ $purchase->amount }}</td>
+                            <td>{{ $purchase->total }}</td>
                          
                          
                         </tr>
