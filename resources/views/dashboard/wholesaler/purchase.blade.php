@@ -9,7 +9,8 @@
         <form action="{{ route('tea.purchase.store')}}" method="post">
         <div class="box-body">
             @csrf
-                        <input type="hidden" name="daily_prices_id" value="" >
+                        <input type="hidden" name="company_id" value="{{ $tea->company_name}}" >
+                        <input type="hidden" name="category_id" value="{{$tea->category_id }}" >
 
                 <div class="form-group row">
                     <label for="" class="col-md-3 col-form-label">Company Name</label>

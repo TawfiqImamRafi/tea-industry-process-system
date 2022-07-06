@@ -15,12 +15,16 @@ class CreateWholesalerPurchasesTable extends Migration
     {
         Schema::create('wholesaler_purchases', function (Blueprint $table) {
             $table->id();
-            $table->string('company_name');
-            $table->string('tea_category');
+            $table->unsignedBigInteger('wholesaler_id');
+            $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('category_id');
             $table->integer('amount');
             $table->integer('price');
             $table->integer('total');
             $table->timestamps();
+            $table->foreign('company_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('wholesaler_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('tea_categories')->onDelete('cascade');
         });
     }
 

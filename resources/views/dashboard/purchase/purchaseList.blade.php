@@ -11,7 +11,7 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Company</th>
+                    <th>Farmer</th>
                     <th>Tea category</th>
                     <th>Date</th>
                     <th>Amount</th>
@@ -26,7 +26,7 @@
                     @foreach ($purchases as $key => $purchase)
                         <tr>
                             <td>{{ $key+1 }}</td>
-                            {{-- <td>{{ $purchase->dailyPrice->company->first_name }}</td> --}}
+                            <td>{{ $purchase->farmer->first_name }}</td>
                             <td>{{ $purchase->dailyPrice->category->name }}</td>
                             <td>{{ user_formatted_date($purchase->date) }}</td>
                             <td>{{ $purchase->amount }}Kg</td>

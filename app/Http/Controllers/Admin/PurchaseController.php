@@ -69,7 +69,7 @@ class PurchaseController extends Controller
         $purchase->daily_prices_id = $request->get('daily_prices_id');
         $purchase->farmer_id = $request->get('farmer_id');
         $purchase->amount = $request->get('amount');
-        $purchase->deduct = $request->get('deduct');
+        $purchase->deduct = $request->get('deduct') ?: 0;
         $purchase->deduct_amount = $request->get('deduct_amount');
         $purchase->grand_total = $request->get('grand_total');
        
@@ -78,7 +78,8 @@ class PurchaseController extends Controller
             return response()->json([
                 'type' => 'success',
                 'title' => 'Success',
-                'message' => 'Purchase successfully'
+                'message' => 'Purchase successfully',
+                'redirect' => route('company.purchase.list')
             ]);
         }
 

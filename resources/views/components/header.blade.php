@@ -10,9 +10,21 @@
             <span id="nav-control"><i class="bx bx-arrow-from-right"></i></span>
         </div>
         <div class="header-right">
+            @if (Auth::user()->hasRole('farmer'))
             <div class="header-nav">
-                Dashboard
+                Farmer
             </div>
+            @endif
+            @if (Auth::user()->hasRole('company'))
+            <div class="header-nav">
+                Company
+            </div>
+            @endif
+            @if (Auth::user()->hasRole('wholesaler'))
+            <div class="header-nav">
+                Wholesaler
+            </div>
+            @endif
             <div class="header-user">
                 <ul>
                     <li>

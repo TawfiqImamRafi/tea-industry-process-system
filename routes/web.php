@@ -43,23 +43,23 @@ Route::post('register', [App\Http\Controllers\Admin\Auth\RegisterController::cla
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function ($router) {
     $router->get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
 
-    $router->group(['prefix' => 'farmer'], function ($router) {
-        $router->get('/', [App\Http\Controllers\Admin\FarmerController::class, 'index'])->name('farmer.list');
-        $router->get('/create', [App\Http\Controllers\Admin\FarmerController::class, 'create'])->name('farmer.create');
-        $router->post('/create', [App\Http\Controllers\Admin\FarmerController::class, 'store'])->name('farmer.store');
-        $router->get('/edit/{id}', [App\Http\Controllers\Admin\FarmerController::class, 'edit'])->name('farmer.edit');
-        $router->put('/edit/{id}', [App\Http\Controllers\Admin\FarmerController::class, 'update'])->name('farmer.update');
-        $router->delete('/destroy/{id}', [App\Http\Controllers\Admin\FarmerController::class, 'destroy'])->name('farmer.destroy');
-    });
+    // $router->group(['prefix' => 'farmer'], function ($router) {
+    //     $router->get('/', [App\Http\Controllers\Admin\FarmerController::class, 'index'])->name('farmer.list');
+    //     $router->get('/create', [App\Http\Controllers\Admin\FarmerController::class, 'create'])->name('farmer.create');
+    //     $router->post('/create', [App\Http\Controllers\Admin\FarmerController::class, 'store'])->name('farmer.store');
+    //     $router->get('/edit/{id}', [App\Http\Controllers\Admin\FarmerController::class, 'edit'])->name('farmer.edit');
+    //     $router->put('/edit/{id}', [App\Http\Controllers\Admin\FarmerController::class, 'update'])->name('farmer.update');
+    //     $router->delete('/destroy/{id}', [App\Http\Controllers\Admin\FarmerController::class, 'destroy'])->name('farmer.destroy');
+    // });
 
-    $router->group(['prefix' => 'company'], function ($router) {
-        $router->get('/', [App\Http\Controllers\Admin\CompanyController::class, 'index'])->name('company.list');
-        $router->get('/create', [App\Http\Controllers\Admin\CompanyController::class, 'create'])->name('company.create');
-        $router->post('/create', [App\Http\Controllers\Admin\CompanyController::class, 'store'])->name('company.store');
-        $router->get('/edit/{id}', [App\Http\Controllers\Admin\CompanyController::class, 'edit'])->name('company.edit');
-        $router->put('/edit/{id}', [App\Http\Controllers\Admin\CompanyController::class, 'update'])->name('company.update');
-        $router->delete('/destroy/{id}', [App\Http\Controllers\Admin\CompanyController::class, 'destroy'])->name('company.destroy');
-    });
+    // $router->group(['prefix' => 'company'], function ($router) {
+    //     $router->get('/', [App\Http\Controllers\Admin\CompanyController::class, 'index'])->name('company.list');
+    //     $router->get('/create', [App\Http\Controllers\Admin\CompanyController::class, 'create'])->name('company.create');
+    //     $router->post('/create', [App\Http\Controllers\Admin\CompanyController::class, 'store'])->name('company.store');
+    //     $router->get('/edit/{id}', [App\Http\Controllers\Admin\CompanyController::class, 'edit'])->name('company.edit');
+    //     $router->put('/edit/{id}', [App\Http\Controllers\Admin\CompanyController::class, 'update'])->name('company.update');
+    //     $router->delete('/destroy/{id}', [App\Http\Controllers\Admin\CompanyController::class, 'destroy'])->name('company.destroy');
+    // });
 
     $router->group(['prefix' => 'daily-price'], function ($router) {
         $router->get('/', [App\Http\Controllers\Admin\DailyPriceController::class, 'index'])->name('price.list');
@@ -97,7 +97,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function ($route
     $router->group(['prefix' => 'purchase'], function ($router) {
         $router->get('/create/{id}', [App\Http\Controllers\Admin\PurchaseController::class, 'index'])->name('purchase.index');
         $router->post('/store', [App\Http\Controllers\Admin\PurchaseController::class, 'store'])->name('purchase.store');
-        $router->get('/list', [App\Http\Controllers\Admin\PurchaseController::class, 'purchaseList'])->name('purchase.list');
+        $router->get('/list', [App\Http\Controllers\Admin\PurchaseController::class, 'purchaseList'])->name('company.purchase.list');
         // $router->get('/edit/{id}', [App\Http\Controllers\Admin\SaleController::class, 'edit'])->name('sale.edit');
         // $router->put('/edit/{id}', [App\Http\Controllers\Admin\SaleController::class, 'update'])->name('sale.update');
         // $router->delete('/destroy/{id}', [App\Http\Controllers\Admin\SaleController::class, 'destroy'])->name('sale.destroy');
@@ -109,4 +109,5 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function ($route
         $router->get('tea/purchase/{id}', [App\Http\Controllers\Admin\WholesalerController::class, 'purchase'])->name('tea.purchase');
         $router->post('tea/purchase/store', [App\Http\Controllers\Admin\WholesalerController::class, 'store'])->name('tea.purchase.store');
     });
+    Route::get('company/sale/list', [App\Http\Controllers\Admin\WholesalerController::class, 'companySaleList'])->name('company.sale.list');
 });

@@ -1,7 +1,7 @@
 <nav class="main-navigation">
     <ul class="navigation" data-widget="tree">
         <li>
-            <a href="#" class="dashboard">
+            <a href="{{ route('dashboard')}}" class="dashboard">
                 <i class="bx bxs-dashboard text-blue-400"></i>
                 <span>Dashboard</span>
             </a>
@@ -46,22 +46,6 @@
                 </li>
             </ul>
         </li> --}}
-        @if (Auth::user()->hasRole('company'))
-            <li class="treeview">
-                <a href="javascript:void(0)">
-                    <i class="bx bxs-check-circle text-green-400"></i>
-                    <span>Pickup</span>
-                </a>
-                <ul class="treeview-menu">
-                    <li>
-                        <a href="{{ route('price.pickuplist') }}">
-                            <i class="bx bx-check-circle"></i>
-                            <span>Requests</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-        @endif
 
         @if (Auth::user()->hasRole('company'))
             <li class="treeview">
@@ -118,7 +102,22 @@
 
             <li>
         @endif
-
+        @if (Auth::user()->hasRole('company'))
+        <li class="treeview">
+            <a href="javascript:void(0)">
+                <i class="bx bxs-check-circle text-green-400"></i>
+                <span>Pickup</span>
+            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <a href="{{ route('price.pickuplist') }}">
+                        <i class="bx bx-check-circle"></i>
+                        <span>Requests</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    @endif
 
 
         @if (Auth::user()->hasRole('wholesaler'))
@@ -137,7 +136,7 @@
             <li>
                 <a href="{{ route('purchase.list') }}">
                     <i class="bx bx-check-circle"></i>
-                    <span>Purchase.list</span>
+                    <span>Purchase list</span>
                 </a>
             </li>
         @endif
@@ -176,9 +175,24 @@
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="{{ route('purchase.list') }}">
+                        <a href="{{ route('company.purchase.list') }}">
                             <i class="bx bx-check-circle"></i>
                             <span>Purchase List</span>
+                        </a>
+                    </li>
+                </ul>
+        @endif
+        @if (Auth::user()->hasRole('company'))
+            <li class="treeview">
+                <a href="javascript:void(0)">
+                    <i class="bx bxs-check-circle text-green-400"></i>
+                    <span>Sale</span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="{{ route('company.sale.list') }}">
+                            <i class="bx bx-check-circle"></i>
+                            <span>Sale List</span>
                         </a>
                     </li>
                 </ul>
